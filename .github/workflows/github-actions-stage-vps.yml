@@ -63,8 +63,8 @@ jobs:
           uses: appleboy/ssh-action@master
           env:
             REPO_NAME: ${{ github.repository }} 
-            APP_PORT: ${{ secrets.APP_PORT }}
-            APP_ENV: ${{ inputs.api-path }}
+            APP_PORT: ${{ vars.APP_PORT }}
+            APP_ENV: ${{ inputs.api-env }}
             APP_DLL: ${{ vars.APP_DLL }}
           with:
             envs: REPO_NAME,APP_PORT,APP_ENV,APP_DLL
