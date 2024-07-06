@@ -66,8 +66,9 @@ jobs:
             APP_PORT: ${{ vars.APP_PORT }}
             APP_ENV: ${{ inputs.api-env }}
             APP_DLL: ${{ vars.APP_DLL }}
+            APP_PATH: ${{ vars.APP_PATH }}
           with:
-            envs: REPO_NAME,APP_PORT,APP_ENV,APP_DLL
+            envs: REPO_NAME,APP_PORT,APP_ENV,APP_DLL,APP_PATH
             host: ${{ vars.MICRO_SERVER_HOST }}
             username: ${{ vars.MICRO_SERVER_USER }}
             password: ${{ secrets.MICRO_SERVER_PASSWORD }}
@@ -75,6 +76,7 @@ jobs:
             script: |
              export APP_NAME=${REPO_NAME}
              export APP_PORT=${APP_PORT}
+             export APP_PATH=${APP_PATH}
              export APP_ENV=${APP_ENV}
              export APP_DLL=${APP_DLL}
              echo $APP_NAME
