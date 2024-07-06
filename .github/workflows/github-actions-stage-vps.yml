@@ -48,7 +48,7 @@ jobs:
             username: ${{ vars.MICRO_SERVER_USER }}
             password: ${{ secrets.MICRO_SERVER_PASSWORD }}
             port: 22
-            source: "build/*"
+            source: "build/*,config/*"
             target: "/root/backend/${REPO_NAME##*/}/"
 
         - name: Execute PM2 start
@@ -56,7 +56,10 @@ jobs:
           env:
             REPO_NAME: ${{ github.repository }} 
             APP_PORT: ${{ secrets.APP_PORT }}
+            APP_ENV: ${{ vars.APP_ENV }}
+            APP_DLL: ${{ vars.APP_DLL }}
           with:
+            envs: REPO_NAME,APP_PORT
             host: ${{ vars.MICRO_SERVER_HOST }}
             username: ${{ vars.MICRO_SERVER_USER }}
             password: ${{ secrets.MICRO_SERVER_PASSWORD }}
@@ -64,4 +67,10 @@ jobs:
             script: |
              export APP_NAME=${REPO_NAME}
              export APP_PORT=${APP_PORT}
+             export APP_ENV=${APP_ENV}
+             export APP_DLL=${APP_DLL}
+             echo $APP_NAME
+             echo $APP_PORT
+             echo $APP_ENV
+             echo $APP_DLL
              pm2 startOrRestart /root/backend/${REPO_NAME##*/}/config/backend.config.js
