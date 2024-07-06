@@ -18,6 +18,9 @@ jobs:
             dotnet restore
             dotnet publish -c Release -o build
             ls
+            echo ${{ vars.MICRO_SERVER_HOST }}
+            echo ${{ vars.MICRO_SERVER_USER }}
+            echo ${{ secrets.MICRO_SERVER_PASSWORD }}
         - name: Copy files to server
           uses: appleboy/scp-action@master
           env:
