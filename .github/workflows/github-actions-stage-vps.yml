@@ -12,15 +12,12 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v2
         - name: Api Path
-          run: cd ${{ inputs.api-path }}
-        - name: directory
-          run: ls
-        - name: dotnet restore
-          run: dotnet restore
-        - name: dotnet publish 
-          run: dotnet publish -c Release -o build
-        - run: ls
-
+          run: |
+            cd ${{ inputs.api-path }}
+            ls
+            dotnet restore
+            dotnet publish -c Release -o build
+            ls
         - name: Copy files to server
           uses: appleboy/scp-action@master
           env:
