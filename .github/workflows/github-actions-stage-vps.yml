@@ -19,7 +19,7 @@ jobs:
             cd ${{ inputs.api-path }}
             ls
             dotnet restore
-            dotnet publish -c Release -o build
+            dotnet publish -c Release -o /build
             ls
             echo ${{ vars.MICRO_SERVER_HOST }}
             echo ${{ vars.MICRO_SERVER_USER }}
