@@ -5,6 +5,9 @@ on:
       api-path:
         required: true
         type: string
+      api-env:
+        required: true
+        type: string        
 jobs:
   deploy-to-server:
       runs-on: ubuntu-latest
@@ -56,10 +59,10 @@ jobs:
           env:
             REPO_NAME: ${{ github.repository }} 
             APP_PORT: ${{ secrets.APP_PORT }}
-            APP_ENV: ${{ vars.APP_ENV }}
+            APP_ENV: ${{ inputs.api-path }}
             APP_DLL: ${{ vars.APP_DLL }}
           with:
-            envs: REPO_NAME,APP_PORT
+            envs: REPO_NAME,APP_PORT,APP_ENV,APP_DLL
             host: ${{ vars.MICRO_SERVER_HOST }}
             username: ${{ vars.MICRO_SERVER_USER }}
             password: ${{ secrets.MICRO_SERVER_PASSWORD }}
