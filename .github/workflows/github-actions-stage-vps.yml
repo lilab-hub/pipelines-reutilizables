@@ -16,6 +16,8 @@ jobs:
 
         - name: Copy files to server
           uses: appleboy/scp-action@master
+          env:
+            REPO_NAME: ${{ github.repository }}           
           with:
             host: ${{ secrets.MICRO_SERVER_HOST }}
             username: ${{ secrets.MICRO_SERVER_USER }}
