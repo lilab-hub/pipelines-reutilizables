@@ -1,7 +1,6 @@
 name: Push Stage Workflow VPS
 on:
-  push:
-    branches: [stage]
+  workflow_call:
 jobs:
   deploy-to-server:
       runs-on: ubuntu-latest
