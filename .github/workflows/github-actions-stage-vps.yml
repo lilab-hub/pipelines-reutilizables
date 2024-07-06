@@ -27,14 +27,17 @@ jobs:
           env:
             REPO_NAME: ${{ github.repository }} 
           with:
+            envs: REPO_NAME
             host: ${{ vars.MICRO_SERVER_HOST }}
             username: ${{ vars.MICRO_SERVER_USER }}
             password: ${{ secrets.MICRO_SERVER_PASSWORD }}
             port: 22
             script: |
              echo ${REPO_NAME}
+             echo "Creando"
              export APP_NAME=${REPO_NAME}
-
+             cd backend/
+             APP_NAME=${REPO_NAME} mkdir -p $APP_NAME
         - run: ls
         - name: Copy files to server
           uses: appleboy/scp-action@master
