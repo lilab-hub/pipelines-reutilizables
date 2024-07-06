@@ -19,11 +19,16 @@ jobs:
             cd ${{ inputs.api-path }}
             ls
             dotnet restore
-            dotnet publish -c Release -o $home/build
+            dotnet publish -c Release -o ../build
             ls
             echo ${{ vars.MICRO_SERVER_HOST }}
             echo ${{ vars.MICRO_SERVER_USER }}
             echo ${{ secrets.MICRO_SERVER_PASSWORD }}
+        - name: Upload dist as artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: dist
+            path: dist
         - run: ls
         - name: Create Directory
           uses: appleboy/ssh-action@master
@@ -51,7 +56,7 @@ jobs:
             username: ${{ vars.MICRO_SERVER_USER }}
             password: ${{ secrets.MICRO_SERVER_PASSWORD }}
             port: 22
-            source: "$home/build/*,config/*"
+            source: "build/*,config/*"
             target: "/root/backend/${REPO_NAME}/"
 
         - name: Execute PM2 start
