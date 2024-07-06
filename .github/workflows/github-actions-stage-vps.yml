@@ -19,7 +19,7 @@ jobs:
             cd ${{ inputs.api-path }}
             ls
             dotnet restore
-            dotnet publish -c Release -o /build
+            dotnet publish -c Release -o $home/build
             ls
             echo ${{ vars.MICRO_SERVER_HOST }}
             echo ${{ vars.MICRO_SERVER_USER }}
@@ -51,7 +51,7 @@ jobs:
             username: ${{ vars.MICRO_SERVER_USER }}
             password: ${{ secrets.MICRO_SERVER_PASSWORD }}
             port: 22
-            source: "build/*,config/*"
+            source: "$home/build/*,config/*"
             target: "/root/backend/${REPO_NAME}/"
 
         - name: Execute PM2 start
