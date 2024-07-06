@@ -57,7 +57,7 @@ jobs:
             password: ${{ secrets.MICRO_SERVER_PASSWORD }}
             port: 22
             source: "build/*,config/*"
-            target: "/root/backend/${REPO_NAME}/"
+            target: "/root/backend/${{ github.repository }}/"
 
         - name: Execute PM2 start
           uses: appleboy/ssh-action@master
