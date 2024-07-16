@@ -11,6 +11,7 @@ on:
 jobs:
   deploy-to-server:
       runs-on: ubuntu-latest
+      environment: ${{ inputs.api-env }}
       steps:
         - name: Checkout code
           uses: actions/checkout@v2
