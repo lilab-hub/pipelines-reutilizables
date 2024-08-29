@@ -77,9 +77,14 @@ jobs:
              export APP_PATH=${APP_PATH}
              export APP_ENV=${APP_ENV}
              export APP_DLL=${APP_DLL}
+             export ${APP_PATH}
              echo $APP_NAME
              echo $APP_PORT
              echo $APP_ENV
              echo $APP_DLL
-             cd ${APP_PATH}/config
+             ls
+             cd ${APP_PATH}
+             cd ..
+             cd config
+             ls
              pm2 startOrRestart backend.config.js
