@@ -81,5 +81,5 @@ jobs:
              echo $APP_PORT
              echo $APP_ENV
              echo $APP_DLL
-             cd ${APP_PATH}
-             pm2 startOrRestart /root/backend/${{ github.repository }}/config/backend.config.js
+             cd ${APP_PATH}/config
+             pm2 startOrRestart backend.config.js
