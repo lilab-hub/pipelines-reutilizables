@@ -77,7 +77,7 @@ jobs:
              export APP_PATH=${APP_PATH}
              export APP_ENV=${APP_ENV}
              export APP_DLL=${APP_DLL}
-             export ${APP_PATH}
+             echo ${APP_PATH}
              echo $APP_NAME
              echo $APP_PORT
              echo $APP_ENV
