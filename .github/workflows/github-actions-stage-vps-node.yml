@@ -1,4 +1,4 @@
-name: Push Stage Workflow VPS
+name: Push Stage Workflow VPS Node
 on:
   workflow_call:
     inputs: 
