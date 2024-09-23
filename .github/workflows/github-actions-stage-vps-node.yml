@@ -85,7 +85,5 @@ jobs:
              echo $APP_DLL
              ls
              cd ${APP_PATH}
-             cd ..
-             cd config
              ls
              pm2 startOrRestart backend.config.js
