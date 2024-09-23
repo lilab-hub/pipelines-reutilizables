@@ -86,5 +86,6 @@ jobs:
              ls
              cd $APP_PATH
              ls
-             pm2 startOrRestart backend.config.js
+             pm2 startOrRestart --name $APP_NAME main.js
+             ls
              
