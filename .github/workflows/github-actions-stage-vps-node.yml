@@ -84,6 +84,5 @@ jobs:
              echo $APP_ENV
              echo $APP_DLL
              ls
-             cd ${APP_PATH}
-             ls
-             pm2 startOrRestart backend.config.js
+             cd ${APP_PATH} && pm2 startOrRestart backend.config.js
+             
