@@ -90,4 +90,15 @@ jobs:
              ls
              cd $APP_PATH
              ls
+             # Instalar NVM si no está instalado
+             [ -s "$HOME/.nvm/nvm.sh" ] || curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+             # Cargar NVM
+             export NVM_DIR="$HOME/.nvm"
+             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+             # Instalar Node.js 22 si no está instalado
+             nvm install 22
+             # Usar Node.js 22
+             nvm use 22
+             # Actualizar PM2 globalmente
+             npm install pm2@latest -g             
              APP_NAME=$APP_NAME ./deploy.sh
