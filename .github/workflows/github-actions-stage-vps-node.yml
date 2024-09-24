@@ -86,5 +86,4 @@ jobs:
              ls
              cd $APP_PATH
              ls
-             pm2 delete $APP_NAME
-             pm2 start --name $APP_NAME main.js
+             APP_NAME=$APP_NAME ./deploy.sh
