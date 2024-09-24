@@ -101,4 +101,4 @@ jobs:
              nvm use 22
              # Actualizar PM2 globalmente
              npm install pm2@latest -g             
-             APP_NAME=$APP_NAME ./deploy.sh
+             pm2 startOrRestart backend.config.js
