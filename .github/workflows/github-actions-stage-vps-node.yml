@@ -86,6 +86,5 @@ jobs:
              ls
              cd $APP_PATH
              ls
-             pm2 startOrRestart --name $APP_NAME main.js
-             ls
-             
+             pm2 delete $APP_NAME
+             pm2 start --name $APP_NAME main.js
