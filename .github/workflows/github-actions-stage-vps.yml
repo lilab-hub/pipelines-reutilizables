@@ -21,6 +21,15 @@ jobs:
           with:
             dotnet-version: '6.0.x'
             
+        - name: Install SSL dependencies
+          run: |
+            sudo apt-get update
+            sudo apt-get install -y libssl1.1 || sudo apt-get install -y libssl3
+            
+        - name: Install BumpVersion
+          run: |
+            dotnet tool install --global BumpVersion --version 1.0.1
+            
         - name: Api Path
           run: |
             cd ${{ inputs.api-path }}
